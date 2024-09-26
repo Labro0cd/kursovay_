@@ -1,17 +1,18 @@
 public class Main {
     public static void main(String[] args) {
         Employee[] employees = new Employee[10];
-        employees[0] = new Employee("Kirill", 1, 100_000);
-        employees[1] = new Employee("Bob", 1, 90_000);
-        employees[2] = new Employee("Jon", 2, 96_000);
-        employees[3] = new Employee("Roma", 1, 110_000);
-        employees[4] = new Employee("Peter", 3, 60_000);
-        employees[5] = new Employee("Kris", 4, 50_000);
-        employees[6] = new Employee("Ron", 2, 94_000);
-        employees[7] = new Employee("Ann", 1, 112_000);
-        employees[8] = new Employee("Gleb", 3, 60_000);
-        employees[9] = new Employee("Ilya", 4, 50_000);
+        employees[0] = new Employee("Kirill","K","A", 1, 100_000);
+        employees[1] = new Employee("Bob","S","A", 1, 90_000);
+        employees[2] = new Employee("Jon","A","B", 2, 96_000);
+        employees[3] = new Employee("Roma","A","C", 1, 110_000);
+        employees[4] = new Employee("Peter","A","D", 3, 60_000);
+        employees[5] = new Employee("Kris","K","H", 4, 50_000);
+        employees[6] = new Employee("Ron","F","A", 2, 94_000);
+        employees[7] = new Employee("Ann","A","O", 1, 112_000);
+        employees[8] = new Employee("Gleb","A","I", 3, 60_000);
+        employees[9] = new Employee("Ilya","A","K", 4, 50_000);
 
+        allEmployee(employees);
     }
 
     public static void allEmployee(Employee[] employees) {
@@ -29,33 +30,33 @@ public class Main {
     }
 
     public static String minSalaryOnEmployee(Employee[] employees) {
-        int a = 10_00_000_000;
-        String b = " 1111 ";
+        int salary = employees[0].getSalary();
+        String employeeMinSalary = employees[0].toString();
         for (Employee employee : employees) {
-            if (employee.getSalary() < a) {
-                a = employee.getSalary();
-                b = employee.toString();
+            if (employee.getSalary() < salary) {
+                salary = employee.getSalary();
+                employeeMinSalary = employee.toString();
             }
         }
-        return "Минимальная зарплата у " + b;
+        return "Минимальная зарплата у " + employeeMinSalary;
     }
 
-    public static String mixSalaryOnEmployee(Employee[] employees) {
-        int a = 0;
-        String b = " 1111 ";
+    public static String maxSalaryOnEmployee(Employee[] employees) {
+        int salary = 0;
+        String employeeMaxSalary = employees[0].toString();
         for (Employee employee : employees) {
-            if (employee.getSalary() > a) {
-                a = employee.getSalary();
-                b = employee.toString();
+            if (employee.getSalary() > salary) {
+                salary = employee.getSalary();
+                employeeMaxSalary = employee.toString();
             }
         }
-        return "Масимальная зарплата у " + b;
+        return "Масимальная зарплата у " + employeeMaxSalary;
     }
 
     public static String middleSalary(Employee[] employees) {
-        int a;
-        a = allSalaryInMonth(employees) / employees.length;
-        return "Средняя зароботная плата за месяц " + a;
+        int middleSalary;
+        middleSalary = allSalaryInMonth(employees) / employees.length;
+        return "Средняя зароботная плата за месяц " + middleSalary;
     }
 
     public static void fioAllEmployee(Employee[] employees) {
@@ -65,17 +66,17 @@ public class Main {
     }
 
     public static void shiftSalary(Employee[] employees, int i) {
-        int a;
+        int shiftSalary;
         for (Employee employee : employees) {
-            a = employee.getSalary() + (employee.getSalary() * i / 100);
-            employee.setSalary(a);
+            shiftSalary = employee.getSalary() + (employee.getSalary() * i / 100);
+            employee.setSalary(shiftSalary);
         }
 
     }
 
     public static String minSalaryInDepartment(Employee[] employees, int department) {
-        int a = 10_00_000_000;
-        String b = " 1111 ";
+        int a = employees[0].getSalary();
+        String b = employees[0].toString();
         for (Employee employee : employees) {
             if (employee.getDepartment() == department) {
                 if (employee.getSalary() < a) {
@@ -89,8 +90,8 @@ public class Main {
     }
 
     public static String maxSalaryInDepartment(Employee[] employees, int department) {
-        int a = 0;
-        String b = " 1111 ";
+        int a = employees[0].getSalary();
+        String b = employees[0].toString();
         for (Employee employee : employees) {
             if (employee.getDepartment() == department) {
                 if (employee.getSalary() > a) {
@@ -114,29 +115,29 @@ public class Main {
     }
 
     public static String middleSalaryInDepartment(Employee[] employees, int department) {
-        int a;
-        a = sumSalaryInDepartment(employees, department) / numberAllEmployeeInDepartment(employees, department);
-        return "Средняя заробатная плата в " + department + " отделе: " + a;
+        int middleSalary;
+        middleSalary = sumSalaryInDepartment(employees, department) / numberAllEmployeeInDepartment(employees, department);
+        return "Средняя заробатная плата в " + department + " отделе: " + middleSalary;
     }
 
     public static void shiftSalaryInDepartment(Employee[] employees, int department, int i) {
-        int a;
+        int shiftSalary;
         for (Employee employee : employees) {
             if (employee.getDepartment() == department) {
-                a = employee.getSalary() + (employee.getSalary() * i / 100);
-                employee.setSalary(a);
+                shiftSalary = employee.getSalary() + (employee.getSalary() * i / 100);
+                employee.setSalary(shiftSalary);
             }
         }
     }
 
     public static int numberAllEmployeeInDepartment(Employee[] employees, int department) {
-        int a = 0;
+        int numberEmployee = 0;
         for (Employee employee : employees) {
             if (employee.getDepartment() == department) {
-                a += 1;
+                numberEmployee += 1;
             }
         }
-        return a;
+        return numberEmployee;
     }
 
     public static void allEmployeeInDepartment(Employee[] employees, int department) {

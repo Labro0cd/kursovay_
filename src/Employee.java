@@ -1,24 +1,28 @@
 import java.util.Objects;
 
 public class Employee {
-    private final String FIO;
+    private final String firstName;
+    private final String middleName;
+    private final String lastName;
     private int department;
     private int salary;
     private final int id;
 
-    static int ID = 0;
+    static int countId = 0;
 
 
-    public Employee(String FIO, int department, int salary) {
-        this.FIO = FIO;
+    public Employee(String firstName, String middleName, String lastName, int department, int salary) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
         this.department = department;
         this.salary = salary;
-        ID += 1;
-        id = ID;
+        countId += 1;
+        id = countId;
     }
 
     public String getFIO() {
-        return FIO;
+        return firstName+" "+middleName+" "+lastName;
     }
 
     public int getDepartment() {
@@ -44,9 +48,9 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee " + "id=" + id +" "+
-                "FIO='" + FIO + '\'' +
-                ", department=" + department +
-                ", salary=" + salary;
+                "FIO='" + getFIO() + '\'' +
+                ", department: " + department +
+                ", salary: " + salary;
     }
 
     @Override
@@ -59,13 +63,13 @@ public class Employee {
 
     @Override
     public int hashCode() {
-        return Objects.hash(FIO, department, salary, id);
+        return Objects.hash(getFIO(), department, salary, id);
     }
 
     public String toStringLoseDepartment() {
-        return "Employee " + "id=" + id +" "+
-                "FIO='" + FIO + '\'' +
-                ", salary=" + salary;
+        return "Employee " + "id: " + id +" "+
+                "FIO: " + getFIO() + '\'' +
+                ", salary: " + salary;
     }
 
 }
